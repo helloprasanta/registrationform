@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<title>Registration Form</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+    <style>
+        div.a {
+            border: 1px solid #040404;
+        }
+    </style>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('formCtrl', function ($scope) {
+            $scope.salutations = [ 
+                { name: 'Mr.', id: 1 },  
+                { name: 'Mrs.', id: 2 },  
+                { name: 'Ms.', id: 3 } 
+            ]; 
+
+            $scope.user = {};
+            $scope.name=$scope.user.name; 
+            $scope.email=$scope.user.email; 
+            $scope.password=$scope.user.password; 
+            $scope.phone=$scope.user.phone; 
+            $scope.address=$scope.user.address; 
+            $scope.salutation=$scope.user.salutation;                 
+            
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+    <div class="container-fluid text-center " ng-app="myApp" ng-controller="formCtrl">
+        <div class="row content">
+            <div class="col-sm-2  ">
+
+            </div>
+            <div class="col-sm-8 a">
+                <div class="mt-2">
+                    <h3 class="text-center">Welcome To E-Registration</h3>
+                </div>
+                <div class="mt-2">
+                    <div class="mt-1">
+                        <!-- <label>Title:</label> -->
+                        <select class="form-control" id="title_select" ng-model="user.salutation" ng-options="salutation.name as  
+                        salutation.name for salutation in salutations" aria-placeholder="Select Salutation">                       
+                        </select><br>
+                    </div>
+                    <div class="mt-1">
+                        <!-- <label for="name">Name:</label> -->
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name"
+                            ng-model="user.name"><br>
+                    </div>
+                    <div class="mt-1">
+                        <!-- <label for="email">Email:</label> -->
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email"
+                            ng-model="user.email"><br>
+                    </div>
+                    <div class="mt-1">
+                        <!-- <label for="pwd">Password:</label> -->
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter Password"
+                            ng-model="user.password"><br>
+                    </div>
+                    <div class="mt-1">
+                        <!-- <label for="phn">Phone:</label> -->
+                        <input type="number" class="form-control" id="phone" placeholder="Enter Phone Number"
+                            ng-model="user.phone"><br>
+                    </div>
+                    <div class="mt-1">
+                        <!-- <label for="address">Address:</label> -->
+                        <textarea class="form-control" rows="5" id="address" placeholder="Enter Your Address"
+                            ng-model="user.address"></textarea>
+                    </div>
+
+                    <div class="mt-2 mb-4">
+                        <button type="button" class="btn btn-primary active" data-toggle="modal"
+                            data-target="#myModal">Submit</button>
+                    </div>
+                </div>
+
+
+
+                <!-- Modal Start -->
+
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog  modal-lg">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h7 class="modal-title">Congrats....!!!. Your Data Captured Successfully....</h7>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <!-- <label > Your Data are as Follows:</label><br> -->
+                              <label >Name:</label> <span><b>{{user.salutation}}{{user.name}}</b></span><br>
+                              <label >Email</label> <span><b>{{user.email}}</b></span><br>
+                              <label >Password</label> <span><b>{{user.password}}</b></span><br>
+                              <label >Phone</label> <span><b>{{user.phone}}</b></span><br>
+                              <label >Address</label> <span><p><b>{{user.address}}</b></p></span><br>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="col-sm-2 ">
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
